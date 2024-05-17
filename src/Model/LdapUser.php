@@ -125,7 +125,7 @@ class LdapUser extends BaseObject implements IdentityInterface
         }
 
         return new static([
-            'Id' => $user['uid'][0],
+            'Id' => $user['samaccountname'][0],
             'Username' => $user['displayname'][0],
             'Email' => $user['mail'][0],
             'Dn' => $user['dn'],
