@@ -38,6 +38,11 @@ class LdapUser extends BaseObject implements IdentityInterface
     private $dn;
 
     /**
+     * @var string[] list of groups of a user.
+     */
+    private $groups;
+
+    /**
      * LdapUser constructor.
      *
      * @param array $config
@@ -112,6 +117,22 @@ class LdapUser extends BaseObject implements IdentityInterface
     }
 
     /**
+     * @return string[]
+     */
+    public function getGroups(): array
+    {
+        return $this->groups;
+    }
+
+    /**
+     * @param string[] $groups
+     */
+    public function setGroups(array $groups): void
+    {
+        $this->groups = $groups;
+    }
+
+    /**
      * @param int|string $uid
      *
      * @return IdentityInterface|null
@@ -124,11 +145,20 @@ class LdapUser extends BaseObject implements IdentityInterface
             return null;
         }
 
+        $groups = [];
+        $groupItems = $user['memberof'] ?? [];
+        foreach ($groupItems as $k => $groupItem) {
+            if (is_integer($k) && preg_match('/CN\\=([^,]+)\\,/', $groupItem, $m)) {
+                $groups[] = $m[1];
+            }
+        }
+
         return new static([
             'Id' => $user['samaccountname'][0],
             'Username' => $user['displayname'][0],
             'Email' => $user['mail'][0],
             'Dn' => $user['dn'],
+            'Groups' => $groups,
         ]);
     }
 

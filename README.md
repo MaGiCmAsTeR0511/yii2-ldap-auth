@@ -10,7 +10,7 @@ composer require "stmswitcher/yii2-ldap-auth"
 ```
 
 # Example of configuration and a use case
-Considering [yii2-app-basic](https://github.com/yiisoft/yii2-app-basic): 
+Considering [yii2-app-basic](https://github.com/yiisoft/yii2-app-basic):
 
 ### Configure the component in your configuration file and change user identity class
 ```php
@@ -25,7 +25,7 @@ Considering [yii2-app-basic](https://github.com/yiisoft/yii2-app-basic):
 
         // optional parameters and their default values
         'ldapVersion' => 3,             // LDAP version
-        'protocol' => 'ldaps://',       // Protocol to use           
+        'protocol' => 'ldaps://',       // Protocol to use
         'followReferrals' => false,     // If connector should follow referrals
         'port' => 636,                  // Port to connect to
         'loginAttribute' => 'uid',      // Identifying user attribute to look up for
@@ -34,7 +34,7 @@ Considering [yii2-app-basic](https://github.com/yiisoft/yii2-app-basic):
         'connectTimeout' => 5,          // Connect timeout, seconds
     ],
     ...
-    
+
     'user' => [
         'identityClass' => '\stmswitcher\Yii2LdapAuth\Model\LdapUser',
     ],
@@ -81,3 +81,33 @@ Yii::$app->ldapAuth->authenticate($user->getDn(), $this->password, 'cn=auth-user
 ```
 
 Now you can login with LDAP credentials to your application.
+
+### Using Access Control Filter
+If you want to use the Access Control Filter, you can use the LdapManager class as an authentication manager:
+```php
+return [
+    'components' => [
+        'authManager' => [
+            'class' => 'stmswitcher\Yii2LdapAuth\LdapManager',
+        ],
+    ],
+];
+```
+
+Next, specify the list of groups that need to be granted access to actions:
+```php
+public function behaviors()
+{
+    return [
+        'access' => [
+            'class' => AccessControl::class,
+            'rules' => [
+                [
+                    'allow' => true,
+                    'roles' => ['group1', 'group2'],
+                ],
+            ],
+        ],
+    ];
+}
+```
