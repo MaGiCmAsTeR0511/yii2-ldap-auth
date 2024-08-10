@@ -6,7 +6,7 @@ Simple extension to handle auth over LDAP in Yii 2 applications.
 # Installation
 
 ```shell script
-composer require "stmswitcher/yii2-ldap-auth"
+composer require "magicmaster05111/yii2-ldap-auth"
 ```
 
 # Example of configuration and a use case
