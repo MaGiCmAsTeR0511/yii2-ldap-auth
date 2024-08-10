@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace stmswitcher\Yii2LdapAuth\Exception;
+namespace magicmaster05111\Yii2LdapAuth\Exception;
 
 use yii\base\Exception;
 

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace stmswitcher\Yii2LdapAuth;
+namespace magicmaster05111\Yii2LdapAuth;
 
-use stmswitcher\Yii2LdapAuth\Exception\Yii2LdapAuthException;
+use magicmaster05111\Yii2LdapAuth\Exception\Yii2LdapAuthException;
 use Yii;
 use yii\rbac\Assignment;
 use yii\rbac\BaseManager;
