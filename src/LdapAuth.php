@@ -99,7 +99,7 @@ class LdapAuth extends Component
             return;
         }
 
-        $this->connection = ldap_connect($this->protocol . $this->host, $this->port);
+        $this->connection = ldap_connect($this->protocol . $this->host.":".$this->port);
 
         ldap_set_option($this->connection, LDAP_OPT_PROTOCOL_VERSION, $this->ldapVersion);
         ldap_set_option($this->connection, LDAP_OPT_REFERRALS, $this->followReferrals);

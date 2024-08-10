@@ -1,11 +1,11 @@
 {
-  "name": "stmswitcher/yii2-ldap-auth",
+  "name": "magicmaster0511/yii2-ldap-auth",
   "license": "MIT",
   "description": "Simple library to handle auth over LDAP in Yii 2 applications.",
   "keywords": ["yii2", "extension", "ldap", "auth"],
   "type": "yii2-extension",
   "require": {
-    "php": ">= 7.3",
+    "php": ">= 8.3",
     "ext-ldap": "*",
     "yiisoft/yii2": "~2.0.14"
   },
