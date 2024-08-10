@@ -17,7 +17,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "stmswitcher\\Yii2LdapAuth\\": "src/"
+      "magicmaster05111\\Yii2LdapAuth\\": "src/"
     }
   }
 }
