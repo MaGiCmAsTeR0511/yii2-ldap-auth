@@ -1,5 +1,5 @@
 {
-  "name": "magicmaster0511/yii2-ldap-auth",
+  "name": "magicmaster05111/yii2-ldap-auth",
   "license": "MIT",
   "description": "Simple library to handle auth over LDAP in Yii 2 applications.",
   "keywords": ["yii2", "extension", "ldap", "auth"],

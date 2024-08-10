@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace magicmaster05111\Yii2LdapAuth;
 
-use magiscmaster05111\Yii2LdapAuth\Exception\Yii2LdapAuthException;
+use magicmaster05111\Yii2LdapAuth\Exception\Yii2LdapAuthException;
 use yii\base\Component;
 
 /**
