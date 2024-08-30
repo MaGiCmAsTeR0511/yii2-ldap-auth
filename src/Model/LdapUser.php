@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace magicmaster05111\Yii2LdapAuth\Model;
 
 use magicmaster05111\Yii2LdapAuth\Exception\Yii2LdapAuthException;
+use magicmaster05111\Yii2LdapAuth\LdapManager;
 use Yii;
 use yii\base\BaseObject;
 use yii\web\IdentityInterface;
@@ -41,6 +42,9 @@ class LdapUser extends BaseObject implements IdentityInterface
      * @var string[] list of groups of a user.
      */
     private $groups;
+
+
+    private $employeetype;
 
     /**
      * LdapUser constructor.
@@ -133,6 +137,23 @@ class LdapUser extends BaseObject implements IdentityInterface
     }
 
     /**
+     * @return string
+     */
+    public function getEmployeetype(): string
+    {
+        return $this->employeetype;
+    }
+
+    /**
+     * @param string $employeetype
+     *
+     */
+    public function setEmployeetype(string $employeetype): void
+    {
+        $this->employeetype = $employeetype;
+    }
+
+    /**
      * @param int|string $uid
      *
      * @return IdentityInterface|null
@@ -159,6 +180,7 @@ class LdapUser extends BaseObject implements IdentityInterface
             'Email' => $user['mail'][0],
             'Dn' => $user['dn'],
             'Groups' => $groups,
+            'employeetype' => $user['employeetype'][0],
         ]);
     }
 
