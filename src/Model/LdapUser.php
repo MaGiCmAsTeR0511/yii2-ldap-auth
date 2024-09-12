@@ -166,13 +166,27 @@ class LdapUser extends BaseObject implements IdentityInterface
             return null;
         }
 
+
         $groups = [];
+
+        $employeetype = $user['employeetype'][0];
+        //Aufspalten der DN
+        $ou = explode("=", explode(",", $user['dn'])[1])[1];
+        switch (true) {
+            case $ou == "Teachers" && $employeetype == "teacher":
+                $groups[] = $ou;
+                break;
+            case $ou == "Students" && $employeetype == "student":
+                $groups[] = $ou;
+                break;
+        }
         $groupItems = $user['memberof'] ?? [];
         foreach ($groupItems as $k => $groupItem) {
             if (is_integer($k) && preg_match('/CN\\=([^,]+)\\,/', $groupItem, $m)) {
                 $groups[] = $m[1];
             }
         }
+
 
         return new static([
             'Id' => $user['userprincipalname'][0],
