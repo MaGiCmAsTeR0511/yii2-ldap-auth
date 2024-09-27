@@ -46,6 +46,8 @@ class LdapUser extends BaseObject implements IdentityInterface
 
     private $employeetype;
 
+    private $employeeid;
+
     /**
      * LdapUser constructor.
      *
@@ -153,6 +155,11 @@ class LdapUser extends BaseObject implements IdentityInterface
         $this->employeetype = $employeetype;
     }
 
+    public function setEmployeeid(string $employeeid): void
+    {
+        $this->employeeid = $employeeid;
+    }
+
     /**
      * @param int|string $uid
      *
@@ -194,7 +201,8 @@ class LdapUser extends BaseObject implements IdentityInterface
             'Email' => $user['mail'][0],
             'Dn' => $user['dn'],
             'Groups' => $groups,
-            'employeetype' => $user['employeetype'][0],
+            'employeetype' => $employeetype,
+            'employeeid' => $user['employeeid'][0],
         ]);
     }
 
