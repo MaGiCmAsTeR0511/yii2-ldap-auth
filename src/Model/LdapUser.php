@@ -114,6 +114,11 @@ class LdapUser extends BaseObject implements IdentityInterface
         return $this->dn;
     }
 
+    public function getEmployeeid(): string
+    {
+        return $this->employeeid;
+    }
+
     /**
      * @param string $dn
      */
